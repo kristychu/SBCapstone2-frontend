@@ -1,5 +1,7 @@
 import axios from "axios";
 
+//SMALL CHANGE
+
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001/api";
 
 /** API Class.
@@ -19,9 +21,7 @@ class SkincareAppApi {
 
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${SkincareAppApi.token}` };
-    const params = (method === "get")
-        ? data
-        : {};
+    const params = method === "get" ? data : {};
 
     try {
       return (await axios({ url, method, data, params, headers })).data;
@@ -49,17 +49,24 @@ class SkincareAppApi {
   }
 
   /** User Signup */
-  static async signup({username, password, firstName, lastName, email, profileImg}) {
+  static async signup({
+    username,
+    password,
+    firstName,
+    lastName,
+    email,
+    profileImg,
+  }) {
     let user = { username, password, firstName, lastName, email, profileImg };
     let res = await axios.post(`${BASE_URL}/auth/register`, user);
-    return this.token = res.data
+    return (this.token = res.data);
   }
 
   /** User Login */
-  static async login({username, password}) {
+  static async login({ username, password }) {
     let user = { username, password };
     let res = await axios.post(`${BASE_URL}/auth/login`, user);
-    return this.token = res.data
+    return (this.token = res.data);
   }
 
   /** Get User Profile */
@@ -71,14 +78,14 @@ class SkincareAppApi {
   }
 
   /** Edit User Profile - fields allowed to change: firstName, lastName, email */
-//   static async profileChanges({username, firstName, lastName, email, password}, token) {
-//     const url = `users/${username}`;
-//     this.token = token;
-//     const method = "patch"
-//     let user = { firstName, lastName, email, password };
-//     let res = await this.request(url, user, method);
-//     return res.user
-//   }
+  //   static async profileChanges({username, firstName, lastName, email, password}, token) {
+  //     const url = `users/${username}`;
+  //     this.token = token;
+  //     const method = "patch"
+  //     let user = { firstName, lastName, email, password };
+  //     let res = await this.request(url, user, method);
+  //     return res.user
+  //   }
 
   /** Update data for one skincare step for a specific user. */
   static async skincareUpdate(username, id, token) {
