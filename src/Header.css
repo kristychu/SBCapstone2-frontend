@@ -1,0 +1,28 @@
+.Header {
+    background-color: #D291BC;
+    color: #57175c;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .Header a {
+    padding: 0.5em 0;
+    width: 10em;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .Header a:hover {
+    background-color: #957DAD;
+    color: white !important;
+  }
+  
+  .Header a.active {
+    font-weight: bold;
+    color: #7f1d85;
+  }
+
+  .Header .logged-in {
+    background-color: #f5bfe4;
+  }

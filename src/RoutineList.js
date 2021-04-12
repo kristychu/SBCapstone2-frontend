@@ -1,0 +1,79 @@
+import React, { useEffect } from "react";
+import RoutineStep from "./RoutineStep";
+import { useSelector, useDispatch } from "react-redux";
+import { getStepsForUser } from "./actions";
+import { Table } from "reactstrap";
+
+function RoutineList() {
+  const token = useSelector((st) => st.users.profile.token);
+  const decoded = JSON.parse(atob(token.split(".")[1]));
+  const username = decoded.username;
+
+  const dispatch = useDispatch();
+  const steps = useSelector((st) => st.steps);
+  const morningSteps = steps[0];
+  const nightSteps = steps[1];
+
+  useEffect(() => {
+    console.log("API CALL FOR STEPS!");
+    dispatch(getStepsForUser(username, token));
+  }, [dispatch, username, token]);
+
+  return (
+    <Table>
+      <thead>MORNING</thead>
+      <tr key="morning">
+        <th>Step</th>
+        <th>You are using:</th>
+      </tr>
+      <tbody>
+        {morningSteps ? (
+          morningSteps.map(
+            ({ stepNumber, routineStep, productId, timeOfDay, stepId }) => (
+              <tr key={stepNumber}>
+                <td key={routineStep}>{routineStep}</td>
+                <td>
+                  <RoutineStep
+                    id={stepId}
+                    routineStep={routineStep}
+                    productId={productId}
+                    timeOfDay={timeOfDay}
+                  />
+                </td>
+              </tr>
+            )
+          )
+        ) : (
+          <RoutineStep />
+        )}
+      </tbody>
+      <thead>NIGHT</thead>
+      <tr key="night">
+        <th>Step</th>
+        <th>You are using:</th>
+      </tr>
+      <tbody>
+        {nightSteps ? (
+          nightSteps.map(
+            ({ stepNumber, routineStep, productId, timeOfDay }) => (
+              <tr key={stepNumber}>
+                <td key={routineStep}>{routineStep}</td>
+                <td>
+                  <RoutineStep
+                    routineStep={routineStep}
+                    productId={productId}
+                    timeOfDay={timeOfDay}
+                  />
+                </td>
+              </tr>
+            )
+          )
+        ) : (
+          <RoutineStep />
+        )}
+      </tbody>
+    </Table>
+  );
+}
+
+export default RoutineList;

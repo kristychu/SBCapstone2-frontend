@@ -1,0 +1,12 @@
+form {
+    width: 20%;
+    margin: auto;
+}
+
+form label {
+    font-weight: bold;
+}
+
+button {
+    float: right;
+}
