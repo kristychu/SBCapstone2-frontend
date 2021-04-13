@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Product from "./Product";
 import { Card, CardText, CardBody, Button, Spinner } from "reactstrap";
-import { createStep } from "./actions";
+import { createStep, clearProductResults } from "./actions";
 
 function ProductsList({ routineStep, timeOfDay, toggle }) {
   const token = useSelector((st) => st.users.profile.token);
@@ -28,7 +28,21 @@ function ProductsList({ routineStep, timeOfDay, toggle }) {
 
   return (
     <div>
-      {products.length > 0 && <p>{products.length} Results:</p>}
+      {products.length > 0 && (
+        <>
+          <p>
+            {products.length} Results:
+            <span className="input-group-btn">
+              <Button
+                color="danger"
+                onClick={() => dispatch(clearProductResults())}
+              >
+                Clear Results
+              </Button>
+            </span>
+          </p>
+        </>
+      )}
       {products.length > 0
         ? products.map(({ id, brand, name }) => (
             <div key={id} id={products[id]}>
