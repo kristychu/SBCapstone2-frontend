@@ -33,19 +33,19 @@ function RoutineList() {
             ({ stepNumber, routineStep, productId, timeOfDay, stepId }) => (
               <tr key={stepNumber}>
                 <td key={routineStep}>{routineStep}</td>
-                <td>
-                  <RoutineStep
-                    id={stepId}
-                    routineStep={routineStep}
-                    productId={productId}
-                    timeOfDay={timeOfDay}
-                  />
-                </td>
+                <RoutineStep
+                  id={stepId}
+                  routineStep={routineStep}
+                  productId={productId}
+                  timeOfDay={timeOfDay}
+                />
               </tr>
             )
           )
         ) : (
-          <RoutineStep />
+          <tr>
+            <RoutineStep />
+          </tr>
         )}
       </tbody>
       <thead>
@@ -60,18 +60,18 @@ function RoutineList() {
             ({ stepNumber, routineStep, productId, timeOfDay }) => (
               <tr key={stepNumber}>
                 <td key={routineStep}>{routineStep}</td>
-                <td>
-                  <RoutineStep
-                    routineStep={routineStep}
-                    productId={productId}
-                    timeOfDay={timeOfDay}
-                  />
-                </td>
+                <RoutineStep
+                  routineStep={routineStep}
+                  productId={productId}
+                  timeOfDay={timeOfDay}
+                />
               </tr>
             )
           )
         ) : (
-          <RoutineStep />
+          <tr>
+            <RoutineStep />
+          </tr>
         )}
       </tbody>
     </Table>

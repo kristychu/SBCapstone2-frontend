@@ -38,17 +38,16 @@ function RoutineStep({ routineStep, productId, timeOfDay, id }) {
   }, [dispatch, productId]);
 
   return (
-    <div key={id}>
-      <div style={{ height: "50px" }}>
+    <>
+      <td key={id}>
         {productId && (
           <>
             <p>
               {productBrand} {productName}
+              <Button color="danger" onClick={handleDelete}>
+                Delete
+              </Button>
             </p>
-            {/* <Button color="primary">Edit</Button> */}
-            <Button color="danger" onClick={handleDelete}>
-              Delete
-            </Button>
           </>
         )}
         {!productId && (
@@ -56,7 +55,7 @@ function RoutineStep({ routineStep, productId, timeOfDay, id }) {
             Find Product
           </Button>
         )}
-      </div>
+      </td>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Search for {routineStep}</ModalHeader>
         <ModalBody>
@@ -68,7 +67,7 @@ function RoutineStep({ routineStep, productId, timeOfDay, id }) {
         </ModalBody>
         <ModalFooter></ModalFooter>
       </Modal>
-    </div>
+    </>
   );
 }
 
