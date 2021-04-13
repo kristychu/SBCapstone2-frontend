@@ -2,6 +2,7 @@ export const LOAD_TOKEN = "LOAD_TOKEN";
 export const DELETE_TOKEN = "DELETE_TOKEN";
 export const ERROR = "ERROR";
 
+export const IS_LOADING = "IS_LOADING";
 export const LOAD_PRODUCT_RESULTS = "LOAD_PRODUCT_RESULTS";
 export const CLEAR_PRODUCT_RESULTS = "CLEAR_PRODUCT_RESULTS";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Product from "./Product";
-import { Card, CardText, CardBody, Button } from "reactstrap";
+import { Card, CardText, CardBody, Button, Spinner } from "reactstrap";
 import { createStep } from "./actions";
 
 function ProductsList({ routineStep, timeOfDay, toggle }) {
@@ -10,12 +10,21 @@ function ProductsList({ routineStep, timeOfDay, toggle }) {
   const username = decoded.username;
 
   const dispatch = useDispatch();
-  const products = useSelector((st) => st.productResults);
+  const products = useSelector((st) => st.productResults.productResults);
+  const isLoading = useSelector((st) => st.productResults.isLoading);
 
   const addProduct = (productId) => {
     dispatch(createStep(username, token, routineStep, timeOfDay, productId));
     toggle();
   };
+
+  if (isLoading) {
+    return (
+      <div>
+        <Spinner color="primary" />
+      </div>
+    );
+  }
 
   return (
     <div>

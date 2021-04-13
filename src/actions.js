@@ -3,6 +3,7 @@ import {
   LOAD_TOKEN,
   ERROR,
   DELETE_TOKEN,
+  IS_LOADING,
   LOAD_PRODUCT_RESULTS,
   CLEAR_PRODUCT_RESULTS,
   LOAD_PRODUCT_DETAILS,
@@ -54,6 +55,7 @@ export const logout = () => ({ type: DELETE_TOKEN });
 export function search(term) {
   return async function (dispatch) {
     try {
+      dispatch(fetchAPI());
       const query = term.split(" ").join("+");
       const res = await axios.get(
         `${EXTERNAL_SKINCARE_API_URL}/product?q=${query}`
@@ -66,6 +68,7 @@ export function search(term) {
   };
 }
 
+export const fetchAPI = () => ({ type: IS_LOADING });
 export const loadProductResults = (products) => ({
   type: LOAD_PRODUCT_RESULTS,
   payload: products,
