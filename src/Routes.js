@@ -22,9 +22,6 @@ function Routes() {
           <Col>
             <main>
               <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
                 <Route exact path="/korean-skincare-routine">
                   <TheRoutine />
                 </Route>
@@ -38,6 +35,9 @@ function Routes() {
                   <UserRoutine />
                 </Route>
                 <Route exact path="/logout">
+                  <Home />
+                </Route>
+                <Route exact path="/">
                   <Home />
                 </Route>
                 <Redirect to="/" />
