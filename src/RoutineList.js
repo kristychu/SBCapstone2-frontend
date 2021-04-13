@@ -21,11 +21,12 @@ function RoutineList() {
 
   return (
     <Table>
-      <thead>MORNING</thead>
-      <tr key="morning">
-        <th>Step</th>
-        <th>You are using:</th>
-      </tr>
+      <thead>
+        <tr key="morning">
+          <th>Morning Step</th>
+          <th>You are using:</th>
+        </tr>
+      </thead>
       <tbody>
         {morningSteps ? (
           morningSteps.map(
@@ -47,11 +48,12 @@ function RoutineList() {
           <RoutineStep />
         )}
       </tbody>
-      <thead>NIGHT</thead>
-      <tr key="night">
-        <th>Step</th>
-        <th>You are using:</th>
-      </tr>
+      <thead>
+        <tr key="night">
+          <th>Night Step</th>
+          <th>You are using:</th>
+        </tr>
+      </thead>
       <tbody>
         {nightSteps ? (
           nightSteps.map(
