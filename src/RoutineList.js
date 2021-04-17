@@ -57,10 +57,11 @@ function RoutineList() {
       <tbody>
         {nightSteps ? (
           nightSteps.map(
-            ({ stepNumber, routineStep, productId, timeOfDay }) => (
+            ({ stepNumber, routineStep, productId, timeOfDay, stepId }) => (
               <tr key={stepNumber}>
                 <td key={routineStep}>{routineStep}</td>
                 <RoutineStep
+                  id={stepId}
                   routineStep={routineStep}
                   productId={productId}
                   timeOfDay={timeOfDay}
