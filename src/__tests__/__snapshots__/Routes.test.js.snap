@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Routes"
+  >
+    <div
+      class="Header"
+    >
+      <h1>
+        Korean Skincare App
+      </h1>
+      <nav>
+        <a
+          aria-current="page"
+          class="active"
+          href="/"
+        >
+          Home
+        </a>
+        <a
+          href="/korean-skincare-routine"
+        >
+          The Routine
+        </a>
+        <a
+          href="/register"
+        >
+          Register
+        </a>
+        <a
+          href="/login"
+        >
+          Login
+        </a>
+      </nav>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          <main>
+            <div>
+              <h2>
+                Welcome to the Korean Skincare App
+              </h2>
+              <p>
+                Track your skincare products for each step of the 
+                <a
+                  href="/korean-skincare-routine"
+                >
+                  Korean Skincare Routine!
+                </a>
+              </p>
+              <p>
+                Have an account already? 
+                <a
+                  href="/login"
+                >
+                  Login!
+                </a>
+              </p>
+              <p>
+                Otherwise, 
+                <a
+                  href="/register"
+                >
+                  Register here
+                </a>
+                .
+              </p>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

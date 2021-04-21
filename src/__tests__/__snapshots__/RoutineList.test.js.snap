@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <p>
+      You need an account to access this page.
+    </p>
+    <p>
+      Have an account already? 
+      <a
+        href="/login"
+      >
+        Login!
+      </a>
+    </p>
+    <p>
+      Otherwise, 
+      <a
+        href="/register"
+      >
+        Register here
+      </a>
+      .
+    </p>
+  </div>
+</DocumentFragment>
+`;

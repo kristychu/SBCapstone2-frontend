@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <form
+      class="search-box"
+    >
+      <div
+        class="input-group form-group"
+      >
+        <input
+          class="form-control width100 form-control"
+          id="search"
+          name="name"
+          placeholder="Enter search term.."
+          type="text"
+          value=""
+        />
+        <span
+          class="input-group-btn"
+        >
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Submit
+          </button>
+        </span>
+      </div>
+    </form>
+    <div>
+      <p>
+        You need an account to access this page.
+      </p>
+      <p>
+        Have an account already? 
+        <a
+          href="/login"
+        >
+          Login!
+        </a>
+      </p>
+      <p>
+        Otherwise, 
+        <a
+          href="/register"
+        >
+          Register here
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
