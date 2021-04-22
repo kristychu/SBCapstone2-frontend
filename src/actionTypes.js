@@ -1,5 +1,5 @@
+export const RESET_ALL = "RESET_ALL";
 export const LOAD_TOKEN = "LOAD_TOKEN";
-export const DELETE_TOKEN = "DELETE_TOKEN";
 export const ERROR = "ERROR";
 
 export const IS_LOADING = "IS_LOADING";

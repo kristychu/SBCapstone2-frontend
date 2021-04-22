@@ -2,6 +2,8 @@ const INITIAL_STATE = [];
 
 export default function steps(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case "RESET_ALL":
+      return [...INITIAL_STATE];
     case "LOAD_ALL_STEPS":
       return action.payload.steps;
     case "ADD_STEP":

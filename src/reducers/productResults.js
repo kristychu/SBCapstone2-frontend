@@ -5,6 +5,8 @@ const INITIAL_STATE = {
 
 export default function productResults(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case "RESET_ALL":
+      return { ...INITIAL_STATE };
     case "IS_LOADING":
       return {
         ...state,

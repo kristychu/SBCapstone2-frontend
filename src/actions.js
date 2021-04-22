@@ -2,7 +2,6 @@ import axios from "axios";
 import {
   LOAD_TOKEN,
   ERROR,
-  DELETE_TOKEN,
   IS_LOADING,
   LOAD_PRODUCT_RESULTS,
   CLEAR_PRODUCT_RESULTS,
@@ -10,6 +9,7 @@ import {
   LOAD_ALL_STEPS,
   ADD_STEP,
   DELETE_STEP,
+  RESET_ALL,
 } from "./actionTypes";
 
 const API_URL = "http://localhost:3001/api";
@@ -45,7 +45,14 @@ export function register(userData) {
 
 export const loadToken = (token) => ({ type: LOAD_TOKEN, token });
 export const gotError = (error) => ({ type: ERROR, error });
-export const logout = () => ({ type: DELETE_TOKEN });
+export const logout = () => ({ type: RESET_ALL });
+
+/** Reset all stores */
+function resetAll() {
+  return { type: RESET_ALL };
+}
+
+export { resetAll };
 
 /** PRODUCT SEARCH ACTIONS
  * - Clear Products Results from product search

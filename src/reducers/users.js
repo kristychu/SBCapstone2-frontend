@@ -5,6 +5,8 @@ const INITIAL_STATE = {
 
 export default function users(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case "RESET_ALL":
+      return { ...INITIAL_STATE };
     case "LOAD_TOKEN":
       return { ...state, profile: action.token };
     case "DELETE_TOKEN":
