@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match snapshot 1`] = `
+exports[`should match snapshot for anonymous user 1`] = `
 <DocumentFragment>
   <div
     class="Header"
@@ -30,6 +30,44 @@ exports[`should match snapshot 1`] = `
         href="/login"
       >
         Login
+      </a>
+    </nav>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot if logged in 1`] = `
+<DocumentFragment>
+  <div
+    class="Header"
+  >
+    <h1>
+      Korean Skincare App
+    </h1>
+    <nav>
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        href="/korean-skincare-routine"
+      >
+        The Routine
+      </a>
+      <a
+        class="logged-in"
+        href="/user-routine"
+      >
+        Your Routine
+      </a>
+      <a
+        class="logged-in"
+        href="/logout"
+      >
+        Logout
       </a>
     </nav>
   </div>

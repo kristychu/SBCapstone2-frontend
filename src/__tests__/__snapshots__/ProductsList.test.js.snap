@@ -1,28 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match snapshot 1`] = `
+exports[`should match snapshot for anonymous user 1`] = `
 <DocumentFragment>
+  Search for something!
+</DocumentFragment>
+`;
+
+exports[`should match snapshot if logged in and display productResults from store after search 1`] = `
+<DocumentFragment>
+  <p>
+    1 Results:
+    <span
+      class="input-group-btn"
+    >
+      <button
+        class="btn btn-danger"
+        type="button"
+      >
+        Clear Results
+      </button>
+    </span>
+  </p>
   <div>
-    <p>
-      You need an account to access this page.
-    </p>
-    <p>
-      Have an account already? 
-      <a
-        href="/login"
+    <div
+      class="card"
+    >
+      <div
+        class="card-body"
       >
-        Login!
-      </a>
-    </p>
-    <p>
-      Otherwise, 
-      <a
-        href="/register"
-      >
-        Register here
-      </a>
-      .
-    </p>
+        <p
+          class="card-text"
+        >
+          <span>
+            test product brand test product name
+          </span>
+        </p>
+        <button
+          class="btn btn-success"
+          type="button"
+        >
+          Add
+        </button>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

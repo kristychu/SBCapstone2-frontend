@@ -5,7 +5,9 @@ import reducer from "../reducers/rootReducer";
 import { render } from "@testing-library/react";
 import Header from "../Header";
 import { MemoryRouter } from "react-router";
+import { makeMockStore } from "../testUtils";
 
+//USING ACTUAL REDUCER WHICH SHOULD BE EMPTY
 const store = createStore(reducer);
 
 it("should render without crashing", () => {
@@ -18,9 +20,30 @@ it("should render without crashing", () => {
   );
 });
 
-it("should match snapshot", function () {
+it("should match snapshot for anonymous user", function () {
   const { asFragment } = render(
     <Provider store={store}>
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    </Provider>
+  );
+  expect(asFragment()).toMatchSnapshot();
+});
+
+// CREATING A MOCK STORE AND FAKED DATA
+const mockStore = makeMockStore({
+  users: {
+    profile: {
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjE4NDQzNDQ0fQ.8PZOXva_Bztp48k8obLY5sj8k7siJVMTIhftj6509EI",
+    },
+  },
+});
+
+it("should match snapshot if logged in", function () {
+  const { asFragment } = render(
+    <Provider store={mockStore}>
       <MemoryRouter>
         <Header />
       </MemoryRouter>

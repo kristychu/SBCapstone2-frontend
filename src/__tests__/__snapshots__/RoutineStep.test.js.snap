@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match snapshot 1`] = `
+exports[`should match snapshot for anonymous user 1`] = `
 <DocumentFragment>
   <div>
     <p>
@@ -24,5 +24,26 @@ exports[`should match snapshot 1`] = `
       .
     </p>
   </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot if logged in 1`] = `
+<DocumentFragment>
+  <table
+    class="table"
+  >
+    <tbody>
+      <tr>
+        <td>
+          <button
+            class="btn btn-info"
+            type="button"
+          >
+            Find Product
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </DocumentFragment>
 `;

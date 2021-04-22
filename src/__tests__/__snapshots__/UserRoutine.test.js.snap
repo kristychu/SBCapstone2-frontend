@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match snapshot 1`] = `
+exports[`should match snapshot for anonymous user 1`] = `
 <DocumentFragment>
   <div>
     <p>
@@ -23,6 +23,122 @@ exports[`should match snapshot 1`] = `
       </a>
       .
     </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot if logged in 1`] = `
+<DocumentFragment>
+  <div>
+    <p>
+      Hello testuser!
+    </p>
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            Morning Step
+          </th>
+          <th>
+            You are using:
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Makeup Remover and Oil Cleanser
+          </td>
+          <td>
+            <button
+              class="btn btn-info"
+              type="button"
+            >
+              Find Product
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Water Based Cleanser
+          </td>
+          <td>
+            <button
+              class="btn btn-info"
+              type="button"
+            >
+              Find Product
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Exfoliator
+          </td>
+          <td>
+            <button
+              class="btn btn-info"
+              type="button"
+            >
+              Find Product
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th>
+            Night Step
+          </th>
+          <th>
+            You are using:
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Makeup Remover and Oil Cleanser
+          </td>
+          <td>
+            <button
+              class="btn btn-info"
+              type="button"
+            >
+              Find Product
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Water Based Cleanser
+          </td>
+          <td>
+            <button
+              class="btn btn-info"
+              type="button"
+            >
+              Find Product
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Exfoliator
+          </td>
+          <td>
+            <button
+              class="btn btn-info"
+              type="button"
+            >
+              Find Product
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </DocumentFragment>
 `;

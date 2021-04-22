@@ -1,20 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match snapshot 1`] = `
+exports[`should match snapshot for no productResults 1`] = `
 <DocumentFragment>
-  <div>
-    <p>
-      <b>
-        Product Brand:
-      </b>
-       
-    </p>
-    <p>
-      <b>
-        Product Name:
-      </b>
-       
-    </p>
-  </div>
+  <span>
+     
+  </span>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot if there is data received from API search results and passed as props to component 1`] = `
+<DocumentFragment>
+  <span>
+    test product brand test product name
+  </span>
 </DocumentFragment>
 `;
