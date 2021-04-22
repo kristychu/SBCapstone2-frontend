@@ -7,6 +7,30 @@ import { useSelector, useDispatch } from "react-redux";
 
 function RoutineStep({ routineStep, productId, timeOfDay, id }) {
   const token = useSelector((st) => st.users.profile.token);
+  const dispatch = useDispatch();
+  const products = useSelector((st) => st.products);
+  let productBrand;
+  let productName;
+  if (products) {
+    const savedProducts = Object.values(products);
+    for (let p of savedProducts) {
+      if (p.id === productId) {
+        productBrand = p.productBrand;
+        productName = p.productName;
+      }
+    }
+  }
+
+  //Modal functionality
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
+  useEffect(() => {
+    if (productId) {
+      console.log("API CALL FOR PRODUCT INFO!");
+      dispatch(getProductDetails(productId));
+    }
+  }, [dispatch, productId]);
   if (!token) {
     return (
       <div>
@@ -23,33 +47,11 @@ function RoutineStep({ routineStep, productId, timeOfDay, id }) {
     const decoded = JSON.parse(atob(token.split(".")[1]));
     const username = decoded.username;
 
-    const dispatch = useDispatch();
-    const savedProducts = useSelector((st) => Object.values(st.products));
-
-    let productBrand;
-    let productName;
-    for (let p of savedProducts) {
-      if (p.id === productId) {
-        productBrand = p.productBrand;
-        productName = p.productName;
-      }
-    }
     const handleDelete = () => {
       dispatch(
         deleteProductFromStep(username, token, id, routineStep, timeOfDay)
       );
     };
-
-    //Modal functionality
-    const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);
-
-    useEffect(() => {
-      if (productId) {
-        console.log("API CALL FOR PRODUCT INFO!");
-        dispatch(getProductDetails(productId));
-      }
-    }, [dispatch, productId]);
 
     return (
       <>

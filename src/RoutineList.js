@@ -7,6 +7,23 @@ import { Table } from "reactstrap";
 
 function RoutineList() {
   const token = useSelector((st) => st.users.profile.token);
+  let username;
+  if (token) {
+    const decoded = JSON.parse(atob(token.split(".")[1]));
+    username = decoded.username;
+  }
+  const dispatch = useDispatch();
+  const steps = useSelector((st) => st.steps);
+  const morningSteps = steps[0];
+  const nightSteps = steps[1];
+
+  useEffect(() => {
+    if (token && username) {
+      console.log("API CALL FOR STEPS!");
+      dispatch(getStepsForUser(username, token));
+    }
+  }, [dispatch, username, token]);
+
   if (!token) {
     return (
       <div>
@@ -20,19 +37,6 @@ function RoutineList() {
       </div>
     );
   } else {
-    const decoded = JSON.parse(atob(token.split(".")[1]));
-    const username = decoded.username;
-
-    const dispatch = useDispatch();
-    const steps = useSelector((st) => st.steps);
-    const morningSteps = steps[0];
-    const nightSteps = steps[1];
-
-    useEffect(() => {
-      console.log("API CALL FOR STEPS!");
-      dispatch(getStepsForUser(username, token));
-    }, [dispatch, username, token]);
-
     return (
       <Table>
         <thead>
