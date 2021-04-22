@@ -1,12 +1,14 @@
 import * as actions from "../actions";
 import * as types from "../actionTypes";
-import configureMockStore from "redux-mock-store";
+import makeMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
 import expect from "expect"; // You can use any testing library
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+// const mockStore = configureMockStore(middlewares);
 
 /** User Actions
  * loadToken - LOAD_TOKEN
@@ -32,13 +34,58 @@ describe("async actions", () => {
     );
 
     const expectedActions = { type: types.LOAD_TOKEN };
-    const store = mockStore({ token: {} });
+    // const store = mockStore({ token: {} });
 
     // return store.dispatch(actions.login(userData)).then(() => {
     // return of async actions
     // expect(store.getActions()).toEqual(expectedActions);
     // });
   });
+});
+
+// CREATING A MOCK STORE AND FAKED DATA
+const mockStore = makeMockStore({
+  users: {
+    profile: {
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjE4NDQzNDQ0fQ.8PZOXva_Bztp48k8obLY5sj8k7siJVMTIhftj6509EI",
+    },
+  },
+});
+
+const mockLoginData = {
+  username: "testuser",
+  password: "password",
+};
+
+const mockResponse = {
+  token:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjE4NDQzNDQ0fQ.8PZOXva_Bztp48k8obLY5sj8k7siJVMTIhftj6509EI",
+};
+
+// CREATING MOCKS
+jest.mock("axios");
+// jest.mock("../../utils/setAuthToken", () => jest.fn());
+
+// jest.mock("jwt-decode");
+
+// jest.mock("../../lib/api", () => ({
+//   post: jest.fn(() => Promise.resolve(mockResponse))
+// }));
+
+it("should return token when logging in", () => {
+  axios.post.mockResolvedValue(mockResponse);
+  // return login(mockLoginData).then((data) =>
+  //   expect(data).toEqual(mockResponse)
+  // );
+  // console.log(login(mockLoginData));
+  // render(
+  //   <Provider store={store}>
+  //     <MemoryRouter>
+  //       <Home />
+  //     </MemoryRouter>
+  //   </Provider>
+  // );
 });
 
 describe("loadToken", () => {
@@ -64,9 +111,9 @@ describe("gotError", () => {
 });
 
 describe("logout", () => {
-  it("should create an action to delete the token", () => {
+  it("should create an action to reset all state", () => {
     const expectedAction = {
-      type: types.DELETE_TOKEN,
+      type: types.RESET_ALL,
     };
     expect(actions.logout()).toEqual(expectedAction);
   });
