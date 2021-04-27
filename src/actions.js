@@ -12,7 +12,7 @@ import {
   RESET_ALL,
 } from "./actionTypes";
 
-const API_URL = "http://localhost:3001/api";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001/api";
 const EXTERNAL_SKINCARE_API_URL = "http://skincare-api.herokuapp.com";
 
 /** USER ACTIONS
@@ -24,7 +24,7 @@ const EXTERNAL_SKINCARE_API_URL = "http://skincare-api.herokuapp.com";
 export function login(userData) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, userData);
+      const res = await axios.post(`${BASE_URL}/auth/login`, userData);
       dispatch(loadToken(res.data));
     } catch (e) {
       dispatch(gotError(e));
@@ -35,7 +35,7 @@ export function login(userData) {
 export function register(userData) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(`${API_URL}/auth/register`, userData);
+      const res = await axios.post(`${BASE_URL}/auth/register`, userData);
       dispatch(loadToken(res.data));
     } catch (e) {
       dispatch(gotError(e));
@@ -91,7 +91,7 @@ export const clearProductResults = () => ({ type: CLEAR_PRODUCT_RESULTS });
 export function getStepsForUser(username, token) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${API_URL}/steps/${username}`, {
+      const res = await axios.get(`${BASE_URL}/steps/${username}`, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -107,7 +107,7 @@ export function createStep(username, token, routineStep, timeOfDay, productId) {
   return async function (dispatch) {
     try {
       const res = await axios.post(
-        `${API_URL}/steps/${username}`,
+        `${BASE_URL}/steps/${username}`,
         {
           routineStep,
           timeOfDay,
@@ -135,7 +135,7 @@ export function deleteProductFromStep(
 ) {
   return async function (dispatch) {
     try {
-      await axios.delete(`${API_URL}/steps/${username}/${id}`, {
+      await axios.delete(`${BASE_URL}/steps/${username}/${id}`, {
         headers: {
           Authorization: "Bearer " + token,
         },
