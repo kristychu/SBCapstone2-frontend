@@ -65,12 +65,7 @@ export function search(term) {
       dispatch(fetchAPI());
       const query = term.split(" ").join("+");
       const res = await axios.get(
-        `${EXTERNAL_SKINCARE_API_URL}/product?q=${query}`,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
+        `${EXTERNAL_SKINCARE_API_URL}/product?q=${query}`
       );
       dispatch(clearProductResults());
       dispatch(loadProductResults(res.data));
@@ -167,12 +162,7 @@ export function getProductDetails(id) {
   return async function (dispatch) {
     try {
       const res = await axios.get(
-        `${EXTERNAL_SKINCARE_API_URL}/products/${id}`,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
+        `${EXTERNAL_SKINCARE_API_URL}/products/${id}`
       );
       let {
         brand: productBrand,
