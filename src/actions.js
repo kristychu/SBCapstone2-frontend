@@ -13,7 +13,7 @@ import {
 } from "./actionTypes";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
-const EXTERNAL_SKINCARE_API_URL = "https://skincare-api.herokuapp.com";
+// const EXTERNAL_SKINCARE_API_URL = "https://skincare-api.herokuapp.com";
 
 /** USER ACTIONS
  * - Login
@@ -64,9 +64,7 @@ export function search(term) {
     try {
       dispatch(fetchAPI());
       const query = term.split(" ").join("+");
-      const res = await axios.get(
-        `${EXTERNAL_SKINCARE_API_URL}/product?q=${query}`
-      );
+      const res = await axios.get(`/product?q=${query}`);
       dispatch(clearProductResults());
       dispatch(loadProductResults(res.data));
     } catch (e) {
@@ -161,9 +159,7 @@ export const removeProductFromStep = (routineName, time) => ({
 export function getProductDetails(id) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(
-        `${EXTERNAL_SKINCARE_API_URL}/products/${id}`
-      );
+      const res = await axios.get(`/products/${id}`);
       let {
         brand: productBrand,
         name: productName,
