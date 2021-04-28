@@ -18,10 +18,12 @@ import {
  * - Logout
  */
 
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+
 export function login(userData) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(`/api/auth/login`, userData);
+      const res = await axios.post(`${BASE_URL}/api/auth/login`, userData);
       dispatch(loadToken(res.data));
     } catch (e) {
       dispatch(gotError(e));
@@ -32,7 +34,7 @@ export function login(userData) {
 export function register(userData) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(`/api/auth/register`, userData);
+      const res = await axios.post(`${BASE_URL}/api/auth/register`, userData);
       dispatch(loadToken(res.data));
     } catch (e) {
       dispatch(gotError(e));
@@ -86,7 +88,7 @@ export const clearProductResults = () => ({ type: CLEAR_PRODUCT_RESULTS });
 export function getStepsForUser(username, token) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`/api/steps/${username}`, {
+      const res = await axios.get(`${BASE_URL}/api/steps/${username}`, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -102,7 +104,7 @@ export function createStep(username, token, routineStep, timeOfDay, productId) {
   return async function (dispatch) {
     try {
       const res = await axios.post(
-        `/api/steps/${username}`,
+        `${BASE_URL}/api/steps/${username}`,
         {
           routineStep,
           timeOfDay,
@@ -130,7 +132,7 @@ export function deleteProductFromStep(
 ) {
   return async function (dispatch) {
     try {
-      await axios.delete(`/api/steps/${username}/${id}`, {
+      await axios.delete(`${BASE_URL}/api/steps/${username}/${id}`, {
         headers: {
           Authorization: "Bearer " + token,
         },
