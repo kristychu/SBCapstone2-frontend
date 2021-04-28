@@ -7,4 +7,11 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    proxy("/api", {
+      target: process.env.REACT_APP_BASE_URL || "http://localhost:3001",
+      changeOrigin: true,
+    })
+  );
 };
