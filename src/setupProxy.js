@@ -4,6 +4,7 @@ module.exports = function (app) {
   app.use(
     proxy("/product", {
       target: "https://skincare-api.herokuapp.com",
+      secure: false,
       changeOrigin: true,
     })
   );
@@ -11,6 +12,7 @@ module.exports = function (app) {
   app.use(
     proxy("/products", {
       target: "https://skincare-api.herokuapp.com",
+      secure: false,
       changeOrigin: true,
     })
   );
