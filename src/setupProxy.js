@@ -18,7 +18,21 @@ module.exports = function (app) {
   );
 
   app.use(
-    createProxyMiddleware("/api", {
+    createProxyMiddleware("/api/auth", {
+      target: process.env.REACT_APP_BASE_URL || "http://localhost:3001",
+      changeOrigin: true,
+    })
+  );
+
+  app.use(
+    createProxyMiddleware("/api/users", {
+      target: process.env.REACT_APP_BASE_URL || "http://localhost:3001",
+      changeOrigin: true,
+    })
+  );
+
+  app.use(
+    createProxyMiddleware("/api/steps", {
       target: process.env.REACT_APP_BASE_URL || "http://localhost:3001",
       changeOrigin: true,
     })
