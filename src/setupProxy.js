@@ -2,7 +2,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
   app.use(
-    createProxyMiddleware("/product", {
+    createProxyMiddleware(["/product", "/products"], {
       target: "https://skincare-api.herokuapp.com",
       headers: { "Access-Control-Allow-Origin": "*" },
       changeOrigin: true,
@@ -10,33 +10,9 @@ module.exports = function (app) {
   );
 
   app.use(
-    createProxyMiddleware("/products", {
-      target: "https://skincare-api.herokuapp.com",
-      headers: { "Access-Control-Allow-Origin": "*" },
-      changeOrigin: true,
-    })
-  );
-
-  app.use(
-    createProxyMiddleware("/api/auth", {
-      target:
-        "https://kc-capstone2-backend.herokuapp.com" || "http://localhost:3001",
-      changeOrigin: true,
-    })
-  );
-
-  app.use(
-    createProxyMiddleware("/api/users", {
-      target:
-        "https://kc-capstone2-backend.herokuapp.com" || "http://localhost:3001",
-      changeOrigin: true,
-    })
-  );
-
-  app.use(
-    createProxyMiddleware("/api/steps", {
-      target:
-        "https://kc-capstone2-backend.herokuapp.com" || "http://localhost:3001",
+    createProxyMiddleware("/api", {
+      target: process.env.REACT_APP_BASE_URL || "http://localhost:3001",
+      secure: false,
       changeOrigin: true,
     })
   );
