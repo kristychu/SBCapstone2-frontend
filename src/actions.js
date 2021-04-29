@@ -64,7 +64,7 @@ export function search(term) {
     try {
       dispatch(fetchAPI());
       const query = term.split(" ").join("+");
-      const res = await axios.get(`/product?q=${query}`);
+      const res = await axios.get(`product?q=${query}`);
       dispatch(clearProductResults());
       dispatch(loadProductResults(res.data));
     } catch (e) {
@@ -159,7 +159,7 @@ export const removeProductFromStep = (routineName, time) => ({
 export function getProductDetails(id) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`/products/${id}`);
+      const res = await axios.get(`products/${id}`);
       console.log(res.data);
       let {
         brand: productBrand,
