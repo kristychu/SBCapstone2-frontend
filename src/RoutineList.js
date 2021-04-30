@@ -48,9 +48,19 @@ function RoutineList() {
         <tbody>
           {morningSteps ? (
             morningSteps.map(
-              ({ stepNumber, routineStep, productId, timeOfDay, stepId }) => (
+              ({
+                stepNumber,
+                routineStep,
+                productId,
+                timeOfDay,
+                stepId,
+                image_url,
+              }) => (
                 <tr key={stepNumber}>
-                  <td key={routineStep}>{routineStep}</td>
+                  <td key={routineStep}>
+                    <img src={image_url} alt="skincare-icon" />
+                    {routineStep}
+                  </td>
                   <RoutineStep
                     id={stepId}
                     routineStep={routineStep}
@@ -75,9 +85,19 @@ function RoutineList() {
         <tbody>
           {nightSteps ? (
             nightSteps.map(
-              ({ stepNumber, routineStep, productId, timeOfDay, stepId }) => (
+              ({
+                stepNumber,
+                routineStep,
+                productId,
+                timeOfDay,
+                stepId,
+                image_url,
+              }) => (
                 <tr key={stepNumber}>
-                  <td key={routineStep}>{routineStep}</td>
+                  <td key={routineStep}>
+                    <img src={image_url} alt="skincare-icon" />
+                    {routineStep}
+                  </td>
                   <RoutineStep
                     id={stepId}
                     routineStep={routineStep}
