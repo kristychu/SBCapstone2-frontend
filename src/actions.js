@@ -160,7 +160,6 @@ export function getProductDetails(id) {
   return async function (dispatch) {
     try {
       const res = await axios.get(`${EXTERNAL_API_URL}/products/${id}`);
-      console.log(res.data);
       let {
         brand: productBrand,
         name: productName,
