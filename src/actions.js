@@ -19,7 +19,7 @@ import {
  */
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
-const EXTERNAL_API_URL = "https://skincare-api.herokuapp.com";
+const EXTERNAL_API_URL = "https://kc-skincare-api.herokuapp.com";
 
 export function login(userData) {
   return async function (dispatch) {
